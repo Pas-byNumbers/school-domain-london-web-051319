@@ -1,20 +1,23 @@
 # code here!
 class School
-	attr_accessor :roster, :name, :grade 
-	attr_reader :school_name 
-	
-	def initialize(school_name)
-    @school = school_name
-  end
+  attr_accessor :name, :roster
   
-  def roster
-  	roster = {}
+  def initialize(name)
+    @name = name
+    @roster = {}
   end 
   
-  def add_student(name,grade)
-  	roster[grade] = []
-  	roster[grade] << name
-  		
-  end
-
-end
+  def add_student(student, level)
+    # this sort of means #=> a || a = b ... or #=> x || x = y
+    # it's freak'n weird
+    roster[level] ||= []
+    roster[level] << student
+  end 
+  
+  def grade(level)
+    roster.detect do |x, y| 
+      if x == level
+        return y 
+      end 
+    end 
+  end 
