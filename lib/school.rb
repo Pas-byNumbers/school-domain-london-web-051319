@@ -7,17 +7,27 @@ class School
     @roster = {}
   end 
   
-  def add_student(student, level)
+  def add_student(student, grade_num)
     # this sort of means #=> a || a = b ... or #=> x || x = y
     # it's freak'n weird
-    roster[level] ||= []
-    roster[level] << student
+    roster[grade_num] ||= []
+    roster[grade_num] << student
   end 
   
-  def grade(level)
+  def grade(grade_num)
     roster.detect do |x, y| 
-      if x == level
+      if x == grade_num
         return y 
       end 
     end 
   end 
+  
+  def sort 
+  new_hash = {}
+  roster.each do |x, y| 
+    new_hash[x] = y.sort 
+  end 
+  new_hash
+end 
+  
+end
