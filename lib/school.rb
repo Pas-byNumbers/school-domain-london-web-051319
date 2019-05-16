@@ -8,8 +8,6 @@ class School
   end 
   
   def add_student(student, grade_num)
-    # this sort of means #=> a || a = b ... or #=> x || x = y
-    # it's freak'n weird
     roster[grade_num] ||= []
     roster[grade_num] << student
   end 
